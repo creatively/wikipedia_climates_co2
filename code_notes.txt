@@ -1,0 +1,7 @@
+
+TODO :
+======
+
+getArrayOfMonthlyMeanTemps
+    > needs testing on many different pages
+    > needs to handle tables with no mean temp row table
