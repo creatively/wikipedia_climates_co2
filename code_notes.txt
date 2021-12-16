@@ -5,3 +5,24 @@ TODO :
 getArrayOfMonthlyMeanTemps
     > needs testing on many different pages
     > needs to handle tables with no mean temp row table
+
+
+// --------------------------------------------------------------------------------
+// arrayOfMonthlyMeanTemps
+// heatingAmount
+// coolingAmount
+// co2EmissionsForThisClimate
+// addDataToExistingTable
+// --------------------------------------------------------------------------------
+
+const heatingAmount = () => {}
+
+const coolingAmount = () => {}
+
+const coolingHeatingEnergyDifferenceRatio = 0.8;
+
+const co2pEmissionsPerUnit = 1;
+
+const co2EmissionsForThisClimate = {};
+
+addRowToExistingTable = () => {};

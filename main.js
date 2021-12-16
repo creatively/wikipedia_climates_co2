@@ -12,7 +12,9 @@ getArrayOfMonthlyMeanTemps = () => {
         rowTh => rowTh.textContent.includes('Daily mean')
     )[0].parentElement;
 
-    const isFareignheight = elsArray('th', table).filter(th => th.textContent.includes('°F')).length > 0;
+    const isFareignheight = elsArray('th', table).filter(
+        rowTh => rowTh.textContent.includes('mean °F')
+    ).length > 0; 
 
     const monthlyMeanColumns = elsArray('td', rowOfMonthlyMeanTemps);
 
@@ -29,9 +31,9 @@ getArrayOfMonthlyMeanTemps = () => {
     }).filter(monthlyMeanTempValue => monthlyMeanTempValue);
 
     const monthlyMeanTempsAllAsCentrigrade = isFareignheight ? monthlyMeanTemps.map(convertFtoC) : monthlyMeanTemps;
-    }
 
     return monthlyMeanTempsAllAsCentrigrade;
 }
 
+log('getArrayOfMonthlyMeanTemps ...');
 log(getArrayOfMonthlyMeanTemps());
