@@ -8,32 +8,40 @@ getArrayOfMonthlyMeanTemps = () => {
         table => table.textContent.includes('Climate data')
     )[0];
 
-    const rowOfMonthlyMeanTemps = elsArray('th', table).filter(
+    const meanTempsHeading = elsArray('th', table).filter(
         rowTh => rowTh.textContent.includes('Daily mean')
-    )[0].parentElement;
+    )[0] || null;
 
-    const isFareignheight = elsArray('th', table).filter(
-        rowTh => rowTh.textContent.includes('mean °F')
-    ).length > 0; 
+    if (meanTempsHeading) {
+        const rowOfMonthlyMeanTemps = meanTempsHeading.parentElement;
 
-    const monthlyMeanColumns = elsArray('td', rowOfMonthlyMeanTemps);
+        const isFareignheight = elsArray('th', table).filter(
+            rowTh => rowTh.textContent.includes('mean °F')
+        ).length > 0; 
+        const monthlyMeanColumns = elsArray('td', rowOfMonthlyMeanTemps);
 
-    const convertFtoC = (f) => ((f - 32) * 5 / 9).toFixed(1);
+        const convertFtoC = (f) => ((f - 32) * 5 / 9).toFixed(1);
 
-    const monthlyMeanTemps = monthlyMeanColumns.map((column, index) => {
-        const isTheTotalsColumn = index !== monthlyMeanColumns.length - 1,
-            columnText = column.textContent;
-            positionOfFirstBracket = columnText.indexOf('(') || columnText.length,
-            firstTextPart = columnText.substring(0, positionOfFirstBracket),
-            isANumberAndNotTheTotalColumn = !isNaN(firstTextPart) && !isTheTotalsColumn;
+        const monthlyMeanTemps = monthlyMeanColumns.map((column, index) => {
+            const isntTheTotalsColumn = index !== monthlyMeanColumns.length - 1,
+                columnText = column.textContent,
+                positionOfFirstBracket = columnText.indexOf('(') || columnText.length,
+                firstTextPart = columnText.substring(0, positionOfFirstBracket),
+                isANumber = Number(firstTextPart) !== 'NaN';
 
-        return isANumberAndNotTheTotalColumn ? null : Number(firstTextPart);
-    }).filter(monthlyMeanTempValue => monthlyMeanTempValue);
+            return isANumber && isntTheTotalsColumn ? Number(firstTextPart) : null;
+        }).filter(monthlyMean => monthlyMean !== null);
 
-    const monthlyMeanTempsAllAsCentrigrade = isFareignheight ? monthlyMeanTemps.map(convertFtoC) : monthlyMeanTemps;
-
-    return monthlyMeanTempsAllAsCentrigrade;
+        const monthlyMeanTempsAllAsCentrigrade = isFareignheight 
+            ? monthlyMeanTemps.map(convertFtoC) 
+            : monthlyMeanTemps;
+        
+        return monthlyMeanTempsAllAsCentrigrade
+    } else {
+        return null;
+    }
 }
 
 log('getArrayOfMonthlyMeanTemps ...');
 log(getArrayOfMonthlyMeanTemps());
+
