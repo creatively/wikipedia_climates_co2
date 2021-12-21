@@ -15,27 +15,40 @@ getArrayOfMonthlyMeanTemps = () => {
     if (meanTempsHeading) {
         const rowOfMonthlyMeanTemps = meanTempsHeading.parentElement;
 
+        const codeOfWierdHyphenThing = 8722;
+
         const isFareignheight = elsArray('th', table).some(
             rowTh => rowTh.textContent.includes('mean °F')
         ); 
+
+        const cleanAnyWierdHyphens = text => {
+            if (text.codePointAt(0) === codeOfWierdHyphenThing) {
+                text = '-' + text.substring(1, text.length);
+            }
+            return text;
+        }
+
         const monthlyMeanColumns = elsArray('td', rowOfMonthlyMeanTemps);
 
-        const convertFtoC = (f) => ((f - 32) * 5 / 9).toFixed(1);
-
-        const monthlyMeanTemps = monthlyMeanColumns.map((column, index) => {
+        const extractMonthlyTemperaturesIntoArray = (column, index) => {
             const isntTheTotalsColumn = index !== monthlyMeanColumns.length - 1,
                 columnText = column.textContent,
                 positionOfFirstBracket = columnText.indexOf('(') || columnText.length,
-                firstTextPart = columnText.substring(0, positionOfFirstBracket),
-                isANumber = Number(firstTextPart) !== 'NaN';
+                extractedTextContent = columnText.substring(0, positionOfFirstBracket),
+                temperatureText = cleanAnyWierdHyphens(extractedTextContent);
 
-            return isANumber && isntTheTotalsColumn ? Number(firstTextPart) : null;
-        }).filter(monthlyMean => monthlyMean !== null);
+            return isntTheTotalsColumn ? temperatureText : null;
+        }
+
+        const convertFtoC = (f) => ((f - 32) * 5 / 9).toFixed(1);
+
+        const monthlyMeanTemps = monthlyMeanColumns.map(extractMonthlyTemperaturesIntoArray)
+                                                    .filter(item => item);
 
         const monthlyMeanTempsAllAsCentrigrade = isFareignheight 
             ? monthlyMeanTemps.map(convertFtoC) 
             : monthlyMeanTemps;
-        
+
         return monthlyMeanTempsAllAsCentrigrade
     } else {
         return null;
@@ -45,23 +58,31 @@ getArrayOfMonthlyMeanTemps = () => {
 const arrayOfMonthlyMeanTemps = getArrayOfMonthlyMeanTemps();
 
 if (arrayOfMonthlyMeanTemps) {
-    const arrayTotal = arr => { let total = 0; arr.forEach(item => {total += Number(item)}); return total}
+    const arrayTotal = arr => { 
+        let total = 0;
+        arr.forEach(item => {
+            total += Number(item)
+        });
+        return total
+    }
 
     const optimumMeanTemp = 17;
 
     const totalHeatingAndCoolingScore = arrayTotal(
         arrayOfMonthlyMeanTemps.map(
-            temp => Math.abs(optimumMeanTemp - temp)
+            temp => {
+                const x = (optimumMeanTemp - temp);
+                return Math.abs(x);
+            }
         )
     ).toFixed(1);
 
+    console.log(arrayOfMonthlyMeanTemps);
     console.log('totalHeatingAndCoolingScore = ', totalHeatingAndCoolingScore);
 } else {
     // no 'mean' row in table
 }
 
 
-
 // NEXT : 
-// <<--- bug reoccured for months below 0F being 'NaN'
 // --->> create carbon emissions factor to add in
