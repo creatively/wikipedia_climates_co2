@@ -1,0 +1,18 @@
+
+ONLINE REFERENCES
+=================
+
+> A previous study where  degree days <--[  correlates (r=0.89 & 0.43) with  ]--> energy useage & co2 emissions  using US state-level data 
+    https://www.pnas.org/content/117/32/19122
+
+> Advice on using degree days 
+    https://www.energylens.com/articles/degree-days
+
+> Data sources for this study to obtain relationship between  degree days <--> co2 emissions
+    CO2 Emissions <-->FIPS Codes
+        https://osf.io/gxm39/
+    FIPS Codes <--> Cities
+        https://www2.census.gov/programs-surveys/cps/methodology/2015%20Geography%20Cover.pdf
+
+> Linear Regression calculator
+    http://www.alcula.com/calculators/statistics/linear-regression/#gsc.tab=0

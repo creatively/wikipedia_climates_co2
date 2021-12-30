@@ -1,34 +1,31 @@
-const log = txt => console.log(txt);
+const arrayOfMonthlyMeanTemps = (() => {
 
-getArrayOfMonthlyMeanTemps = () => {
+    const arrayOfElements = (selector, parentElement) => { return parentElement ? Array.from(parentElement.querySelectorAll(selector)) : Array.from(document.querySelectorAll(selector)) };
 
-    const elsArray = (selector, parentElement) => { return parentElement ? Array.from(parentElement.querySelectorAll(selector)) : Array.from(document.querySelectorAll(selector)) };
-
-    const table = elsArray('.wikitable').filter(
+    const table = arrayOfElements('.wikitable').filter(
         table => table.textContent.includes('Climate data')
     )[0];
 
-    const meanTempsHeading = elsArray('th', table).filter(
+    const meanTempsHeading = arrayOfElements('th', table).filter(
         rowTh => rowTh.textContent.includes('Daily mean')
     )[0] || null;
 
     if (meanTempsHeading) {
         const rowOfMonthlyMeanTemps = meanTempsHeading.parentElement;
 
-        const codeOfWierdHyphenThing = 8722;
-
-        const isFareignheight = elsArray('th', table).some(
+        const isFareignheight = arrayOfElements('th', table).some(
             rowTh => rowTh.textContent.includes('mean °F')
         ); 
 
         const cleanAnyWierdHyphens = text => {
+            const codeOfWierdHyphenThing = 8722;
             if (text.codePointAt(0) === codeOfWierdHyphenThing) {
                 text = '-' + text.substring(1, text.length);
             }
             return text;
         }
 
-        const monthlyMeanColumns = elsArray('td', rowOfMonthlyMeanTemps);
+        const monthlyMeanColumns = arrayOfElements('td', rowOfMonthlyMeanTemps);
 
         const extractMonthlyTemperaturesIntoArray = (column, index) => {
             const isntTheTotalsColumn = index !== monthlyMeanColumns.length - 1,
@@ -51,38 +48,29 @@ getArrayOfMonthlyMeanTemps = () => {
 
         return monthlyMeanTempsAllAsCentrigrade
     } else {
+        // no 'mean' row in table
         return null;
     }
+})();
+
+console.log(arrayOfMonthlyMeanTemps);
+
+const getTotalScore = () => {
+    const optimumMeanTemp = 18,
+        arrayTotal = arr => arr.reduce((a, b) => a + b, 0),
+        getHeatingCoolingScoreForMonth = meanTemperatureForMonth => Math.abs(optimumMeanTemp - meanTemperatureForMonth),
+        arrayOfMonthlyScores = arrayOfMonthlyMeanTemps.map(getHeatingCoolingScoreForMonth);
+
+    return arrayTotal(arrayOfMonthlyScores).toFixed(1);
 }
 
-const arrayOfMonthlyMeanTemps = getArrayOfMonthlyMeanTemps();
+const totalScore = arrayOfMonthlyMeanTemps ? getTotalScore() : null;
 
-if (arrayOfMonthlyMeanTemps) {
-    const arrayTotal = arr => { 
-        let total = 0;
-        arr.forEach(item => {
-            total += Number(item)
-        });
-        return total
-    }
+console.log('totalScore = ', totalScore);
 
-    const optimumMeanTemp = 17;
-
-    const totalHeatingAndCoolingScore = arrayTotal(
-        arrayOfMonthlyMeanTemps.map(
-            temp => {
-                const x = (optimumMeanTemp - temp);
-                return Math.abs(x);
-            }
-        )
-    ).toFixed(1);
-
-    console.log(arrayOfMonthlyMeanTemps);
-    console.log('totalHeatingAndCoolingScore = ', totalHeatingAndCoolingScore);
-} else {
-    // no 'mean' row in table
-}
-
+const estimatedHeatingCoolingCarbonEmissionsPerYear = ((totalScore) => {
+    
+})();
 
 // NEXT : 
-// --->> create carbon emissions factor to add in
+// --->> create carbon emissions formula
