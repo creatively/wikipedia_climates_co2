@@ -68,8 +68,8 @@ if (arrayOfMonthlyMeanTemps) {
 
     const rowNumberForText = table.getElementsByTagName("tr").length - 1;
     const newTableRow = table.insertRow(rowNumberForText);
-    newTableRow.innerHTML = '<th></th><td colspan="13">' +
-        'The estimated annual CO2 emissions from household heating and air-con in this location is '
-            + estimatedHeatingCoolingCarbonEmissionsPerYear + 
-        ' tonnes</td>';
+    newTableRow.innerHTML = '<td colspan="14">' +
+        'The estimated CO2 emission from household heating and air-con in this location is ' +
+            estimatedHeatingCoolingCarbonEmissionsPerYear + 
+        ' tonnes/year</td>';
 }

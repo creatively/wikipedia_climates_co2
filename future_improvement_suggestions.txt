@@ -1,7 +1,9 @@
 
-TODO :
-======
+NEXT TASKS / BUGS:
+==================
 (---Now all completed---)
+> Minor bug, where final html text appears in developer Console's log rather than just the table
+
 
 POTENTIAL FUTURE IMPROVEMENTS :
 ===============================
@@ -13,3 +15,5 @@ POTENTIAL FUTURE IMPROVEMENTS :
                 "15.5C" is commonly used in the UK
 > For Wikipedia climate tables with 'max' & 'min' numbers available but not 'mean' (eg. "Imphal" city) 
     create a function to average the 'max' & 'min' numbers into likely 'means'
+> The current scores assume that air-con & heating use the same amount of energy per degree,
+    so a validated weighting factor would help address that and improve accuracy of the resulting CO2 figure
