@@ -11,9 +11,10 @@ POTENTIAL FUTURE IMPROVEMENTS :
 > Make the "/35"  [ HEATING/COOLING SCORE --> CO2 EMISSIONS ]  factor more accuarte
     by using  place<-->co2  data from countries beyond the USA
 > Potentialy improve the "18C" midpoint, by checking for higher correlation coefficients using other midpoint numbers
-    note that : "18C" is commonly used in the USA as the midpoint to calculate heating & cooling 'degree days' amongst engineers
+    note that : "18C" is commonly used in the USA as the midpoint to calculate heating & cooling 'degree eddays' amongst engineers
                 "15.5C" is commonly used in the UK
 > For Wikipedia climate tables with 'max' & 'min' numbers available but not 'mean' (eg. "Imphal" city) 
     create a function to average the 'max' & 'min' numbers into likely 'means'
 > The current scores assume that air-con & heating use the same amount of energy per degree,
     so a validated weighting factor would help address that and improve accuracy of the resulting CO2 figure
+> Average household CO2 emissions are also influenced by income levels. GDP figures are often also included on a Wikipedia place page, and could be 'grabbed' and factored in.
