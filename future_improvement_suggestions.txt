@@ -1,0 +1,15 @@
+
+TODO :
+======
+(---Now all completed---)
+
+POTENTIAL FUTURE IMPROVEMENTS :
+===============================
+
+> Make the "/35"  [ HEATING/COOLING SCORE --> CO2 EMISSIONS ]  factor more accuarte
+    by using  place<-->co2  data from countries beyond the USA
+> Potentialy improve the "18C" midpoint, by checking for higher correlation coefficients using other midpoint numbers
+    note that : "18C" is commonly used in the USA as the midpoint to calculate heating & cooling 'degree days' amongst engineers
+                "15.5C" is commonly used in the UK
+> For Wikipedia climate tables with 'max' & 'min' numbers available but not 'mean' (eg. "Imphal" city) 
+    create a function to average the 'max' & 'min' numbers into likely 'means'

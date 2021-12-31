@@ -1,0 +1,103 @@
+CALCULATION METHOD USED TO OBTAIN THE "/35" CARBON FACTOR USED TO CONVERT SCORE INTO CO2 EMISSION EQUIVALENT
+===================================================================================================================
+
+CITY			COUNTY		CO2**	HEATING / COOLING SCORE
+
+Phoenix		    04013		2.9		104
+Raleigh, NC	    37063		2.7		83
+West Palm B	    12099		2.7		76
+LA			    06037		1.2 	35
+Worcester MA	25027		2.6		122
+
+Waukegan IL	    17097		3.3		126
+Minneapolis	    27053		3.9		142
+Tulsa OK		40143		4.1		94
+Seattle WA		42660		2.2		77
+Charleston SC	16700		2.7		71
+
+Eugene OR	    21660		2.0		85
+Corpus Chr TX	18580		3.0		72	
+Boise ID		14260		2.2		107
+Billings MT		13740		2.4		126
+Spokane 		44060		2.4		119
+
+Colorado Spr	17820		3.8		111
+Naples FL		34940		3.3		74
+Santa Rosa CA	42220		1.6		52
+Binghamton NY	13780		2.3		129
+Peoria		    37900		4.3		115
+
+^ CORRELATION COEFFICIENT = 0.49   
+
+--------------------------------
+
+    Above code scores are based on : 18C optimum mean temp + 1.0 HDD/CDD energy use ratio
+
+    Data sources used to obtain relationship between  [ CO2 emissions <---> Placenames ]  were :
+        CO2 Emissions <--> County Codes
+            https://osf.io/gxm39/
+        County Codes <--> Placename
+            https://www2.census.gov/programs-surveys/cps/methodology/2015%20Geography%20Cover.pdf
+
+
+_________________________________________________________________________________________________
+
+REGRESSION CALCULATOR TEXT USED
+    http://www.alcula.com/calculators/statistics/correlation-coefficient/
+
+Text format for above calculator
+2.9, 104
+2.7, 83
+2.7, 76
+1.2, 35
+2.6, 122
+3.3, 126
+3.9, 142
+4.1, 94
+2.2, 77
+2.7, 71
+2, 85
+3, 72
+2.2, 107
+2.4, 126
+2.4, 119
+3.8, 111
+3.3, 74
+1.6, 52
+2.3, 129
+4.3, 115
+
+CORRELATION COEFFICIENT = 0.48
+
+Reversed format for above calculator :
+104, 2.9
+83, 2.7
+76, 2.7
+35, 1.2
+122, 2.6
+126, 3.3
+142, 3.9
+94, 4.1
+77, 2.2
+71, 2.7
+85, 2
+72, 3
+107, 2.2
+126, 2.4
+119, 2.4
+111, 3.8
+74, 3.3
+52, 1.6
+129, 2.3
+115, 4.3
+
+===========================================================================================
+
+USING A THE LINEAR REGRSSION LINE OF  [ HEATING/COOLING SCORE --> CO2 EMISSIONS ]  SCORES :
+0 --> 0
+140 --> 4
+
+SO THE CARBON EMISSIONS FORMULA IS :
+totalScore / 35;
+
+===========================================================================================
