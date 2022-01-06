@@ -18,3 +18,4 @@ POTENTIAL FUTURE IMPROVEMENTS :
 > The current scores assume that air-con & heating use the same amount of energy per degree,
     so a validated weighting factor would help address that and improve accuracy of the resulting CO2 figure
 > Average household CO2 emissions are also influenced by income levels. GDP figures are often also included on a Wikipedia place page, and could be 'grabbed' and factored in.
+> Differences in energy sources between countries
