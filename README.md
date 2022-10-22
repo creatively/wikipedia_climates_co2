@@ -1,11 +1,11 @@
-On Wikipedia town/city pages, this code uses the mean temperature of months already in the page's climate table 
-to calculate estimated co2 emissions from heating or air-con energy useage per average household.
+This js code snippet calculates the approximate annual CO2 emissions for a household's heating/cooling needs
+It uses the existing climate tables for a town/city to calculate the likely heating/cooling needs for each month's temperature.
 
-It then adds a line to the page's existing climate table, stated the place's calculated CO2 emissions figure.
+When the js code is applied to js console on the Wikipedia's page's, it adds an extra line to the page's existing climate table, stating the place's approximate CO2 emissions per year.
 
 ------------------------------------------
 
-This can be tested on any Wikipedia page with a location's climate data table that contains a row of monthly 'mean' temperatures, by :
+This can be applied to any Wikipedia towns/cities page that has a climate data table that has a row of monthly 'mean' temperatures.
 Click F12 ...
 Click the resulting "Console" tab ...
 Paste in the code from this project's "main.js" file ...
