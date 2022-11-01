@@ -1,7 +1,6 @@
-This js code snippet calculates the approximate annual CO2 emissions for a household's heating/cooling needs
-It uses the existing climate tables for a town/city to calculate the likely heating/cooling needs for each month's temperature.
+This code snippet calculates heating/cooling CO2 emissions for any town/city with a climate table on it's Wikipedia page.
 
-When the js code is applied to js console on the Wikipedia's page's, it adds an extra line to the page's existing climate table, stating the place's approximate CO2 emissions per year.
+An extra row is added to the location's climate data table, illustrating the approximate heating/cooling CO2 emissions for each month.
 
 ------------------------------------------
 
@@ -10,4 +9,4 @@ Click F12 ...
 Click the resulting "Console" tab ...
 Paste in the code from this project's "main.js" file ...
 Press enter ...
-The new row of the estimated CO2 emissions is now visible near the bottom of the table
+The new row of the estimated CO2 emissions is now visible at the bottom of the climate data table
